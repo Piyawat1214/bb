@@ -39,9 +39,7 @@ s = g.read().splitlines()
 def KLOP():
 	print('''
 \x1b[31m85apiตึงๆ
-\033[92mFB:Suthiphat Supirab 
-\033[92mGitHub:https://github.com/KLOP16480
-\033[92mคนทำบีมคุง
+\033[92mFB:PIYAWAT
 	''')
 	
 	phone = input(" \x1b[96mเบอร์  : \x1b[92m")
