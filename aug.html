@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>เว็ปดักอั่งเปา - Form Example</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+        .container-wrapper {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .container {
+            width: 300px;
+            padding: 20px;
+            border: 2px solid #000;
+            border-radius: 15px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin: auto;
+        }
+        .container input {
+            display: block;
+            width: calc(100% - 20px);
+            margin: 10px 0;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        .container button {
+            width: 100%;
+            padding: 10px;
+            background-color: red;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+        .container button::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 300%;
+            height: 300%;
+            background: rgba(255, 0, 0, 0.5);
+            transition: all 0.5s;
+            border-radius: 50%;
+            opacity: 0;
+            transform: translate(-50%, -50%) scale(0);
+        }
+        .container button:active::after {
+            opacity: 1;
+            transform: translate(-50%, -50%) scale(1);
+        }
+    </style>
+    <script>
+        function sendRequest() {
+            const email = document.querySelector('input[type="email"]').value;
+            const password = document.querySelector('input[type="password"]').value;
+            const phone = document.querySelector('input[type="tel"]').value;
+
+            const url = `http://localhost:9000/${email}/${password}/${phone}`;
+
+            fetch(url, {
+                method: 'GET'
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log('Success:', data);
+                alert('Request sent successfully');
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+                alert('โปรดรอสักครู่ กำลังติดตั้ง');
+            });
+        }
+    </script>
+</head>
+<body>
+
+<div class="container-wrapper">
+    <h1>เว็ปดักอั่งเปา</h1>
+    <div class="container">
+        <input type="email" placeholder="Email">
+        <input type="password" placeholder="Password">
+        <input type="tel" placeholder="Phone True money">
+        <button onclick="sendRequest()">Submit</button>
+    </div>
+</div>
+
+</body>
+</html>
